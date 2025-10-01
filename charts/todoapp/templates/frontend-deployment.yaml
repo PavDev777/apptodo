@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.frontend.service.port }}
+          env:
+            - name: PG_HOST
+              value: "postgres"
+            - name: PG_PORT
+              value: "5432"
+            - name: PG_USER
+              value: "postgres"
+            - name: PG_PASSWORD
+              value: "postgres"
+            - name: PG_DATABASE
+              value: "tododb"

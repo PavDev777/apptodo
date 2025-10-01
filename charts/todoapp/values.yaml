@@ -1,0 +1,13 @@
+backend:
+  image:
+    repository: pavdev777/todo-backend
+    tag: latest
+  service:
+    port: 3000
+frontend:
+  image:
+    repository: pavdev777/todo-frontend
+    tag: latest
+  service:
+    port: 3001
+replicaCount: 1
