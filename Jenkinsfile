@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        BACKEND_IMAGE = "pavdev777/todo-backend:${BUILD_NUMBER}"
-        FRONTEND_IMAGE = "pavdev777/todo-frontend:${BUILD_NUMBER}"
+        BACKEND_IMAGE = "pavdev777/todo-backend:latest"
+        FRONTEND_IMAGE = "pavdev777/todo-frontend:latest"
         NAMESPACE = "todoapp"
     }
 
@@ -49,9 +49,7 @@ pipeline {
                     helm upgrade --install todoapp charts/todoapp \
                       --namespace ${NAMESPACE} --create-namespace \
                       --set backend.image.repository=pavdev777/todo-backend \
-                      --set backend.image.tag=${BUILD_NUMBER} \
                       --set frontend.image.repository=pavdev777/todo-frontend \
-                      --set frontend.image.tag=${BUILD_NUMBER}
                     """
                 }
             }
