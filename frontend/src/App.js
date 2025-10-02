@@ -25,7 +25,7 @@ function App() {
     <div>
       <h1>Todo App testing</h1>
       <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <button onClick={addTodo}>Add</button>
+      <button onClick={addTodo}>Addd</button>
       <ul>
         {todos.map((t) => (
           <li key={t.id}>{t.title}</li>
